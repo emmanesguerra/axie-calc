@@ -36,9 +36,18 @@ and open the template in the editor.
                         </div>
                         <div class="calc">
                             <h4>Target Class</h4>
-                            <div class="form-check" v-for="target in targettype">
-                                <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
-                                <label class="form-check-label" for="radio1">{{ target }}</label>
+                            <div class="form-check" v-for="target in targettypes">
+                                <input type="radio" class="form-check-input" v-bind:id="target.name" v-bind:value="target.type" v-model="targettype">
+                                <label class="form-check-label" v-bind:for="target.name">{{ target.name }}</label>
+                            </div>
+                            <h4 class="mt-1">Additional Options</h4>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="check1"  v-model="isBugSplatAttackingBug">
+                                <label for="check1">Is Bug Splat attacking a BUG type</label>
+                            </div>
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="check2" v-model="isPricklyTrapAttackingLast">
+                                <label for="check2">Is Prickly Trap attacking last</label>
                             </div>
                             <h4 class="mt-3">Selected Skills</h4>
                             <div v-for="sskills in selectedskills">

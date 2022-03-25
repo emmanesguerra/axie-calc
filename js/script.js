@@ -6,12 +6,24 @@
 var app = new Vue({
     el: '#app',
     data: {
-        targettype: [
-            'Plant/ Reptile/ Dusk',
-            'Beat/ Mech/ Bug',
-            'Bird/ Aqua/ Dawn'
+        targettypes: [
+            {
+                name: 'Plant/ Reptile/ Dusk',
+                type: 1,
+            },
+            {
+                name: 'Beat/ Mech/ Bug',
+                type: 2,
+            },
+            {
+                name: 'Bird/ Aqua/ Dawn',
+                type: 3,
+            }
         ],
         selectedskills: [],
+        isBugSplatAttackingBug: false,
+        isPricklyTrapAttackingLast: false,
+        targettype: null,
         axies: [
             {
                 name: 'Mech',
