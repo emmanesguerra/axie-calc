@@ -29,6 +29,7 @@ var app = new Vue({
                 name: 'Mech',
                 skills: [
                     {
+                        id: 1,
                         name: 'Heroic Reward',
                         ene: 1,
                         atk: 55,
@@ -38,6 +39,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 2,
                         name: 'Nut Crack',
                         ene: 1,
                         atk: 105,
@@ -47,6 +49,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 3,
                         name: 'Sinister Strike',
                         ene: 1,
                         atk: 130,
@@ -56,6 +59,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 4,
                         name: 'Nut Throw',
                         ene: 1,
                         atk: 105,
@@ -70,6 +74,7 @@ var app = new Vue({
                 name: 'Dusk',
                 skills: [
                     {
+                        id: 5,
                         name: 'Vine Dagger',
                         ene: 0,
                         atk: 20,
@@ -79,6 +84,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 6,
                         name: 'Chomp',
                         ene: 1,
                         atk: 75,
@@ -88,6 +94,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 7,
                         name: 'Headshot',
                         ene: 1,
                         atk: 130,
@@ -97,6 +104,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 8,
                         name: 'Spicy Surprise',
                         ene: 1,
                         atk: 80,
@@ -111,6 +119,7 @@ var app = new Vue({
                 name: 'Plant',
                 skills: [
                     {
+                        id: 9,
                         name: 'Bug Splat',
                         ene: 1,
                         atk: 110,
@@ -120,6 +129,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 10,
                         name: 'Vegetal Bite',
                         ene: 1,
                         atk: 30,
@@ -129,6 +139,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 11,
                         name: 'Prickly Trap',
                         ene: 1,
                         atk: 110,
@@ -138,6 +149,7 @@ var app = new Vue({
                         selected: false
                     },
                     {
+                        id: 12,
                         name: 'Spicy Surprise',
                         ene: 1,
                         atk: 80,
@@ -176,9 +188,8 @@ var app = new Vue({
             skill.selected = !skill.selected;
 
             var valObj = this.selectedskills.findIndex(object => {
-                return object.name === skill.name;
+                return object.id === skill.id;
             });
-            console.log(valObj);
 
             if (skill.selected) {
                 if (valObj < 0) {
@@ -189,6 +200,9 @@ var app = new Vue({
                     this.selectedskills.splice(valObj, 1);
                 }
             }
+        },
+        addMore: function (skill) {
+            this.selectedskills.push(skill);
         }
     }
 })

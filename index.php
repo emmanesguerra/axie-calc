@@ -31,6 +31,10 @@ and open the template in the editor.
                                     <span class="name">{{ skills.name }}</span>
 
                                     <p class="desc">{{ skills.desc }}</p>
+                                    
+                                    <div class="addMore" v-if="skills.selected" @click="addMore(skills)">
+                                        +1
+                                    </div>
                                 </div>
                             </div>
                         </div>

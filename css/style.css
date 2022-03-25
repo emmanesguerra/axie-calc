@@ -56,6 +56,18 @@ and open the template in the editor.
     float: left;
     width: 148px;
 }
+.dcards .addMore
+{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #fff;
+    padding: 5px;
+    border-radius: 50%;
+    z-index: 5;
+    font-size: 14px;
+    font-weight: bold;
+}
 .calc
 {
     position: absolute;
