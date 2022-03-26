@@ -185,24 +185,47 @@ var app = new Vue({
             }
         },
         selectSkills: function (skill) {
-            skill.selected = !skill.selected;
+            skill.selected = true;
 
-            var valObj = this.selectedskills.findIndex(object => {
-                return object.id === skill.id;
-            });
-
-            if (skill.selected) {
-                if (valObj < 0) {
-                    this.selectedskills.push(skill);
-                }
-            } else {
-                if (valObj >= 0) {
-                    this.selectedskills.splice(valObj, 1);
-                }
+            var count = _.filter(this.selectedskills, function(o) { if (o.id == skill.id) return o }).length;
+            
+            if(count < 2) {
+                this.selectedskills.push(skill);
             }
         },
-        addMore: function (skill) {
-            this.selectedskills.push(skill);
+        clearall: function () {
+            var vm = this;
+            _.forEach(this.selectedskills, function (skills) {
+                var ss = vm.findSkill(skills);
+                ss.selected = false;
+            });
+            
+            this.selectedskills = [];
+        },
+        removesskill: function (index, skill) {
+            this.selectedskills.splice(index, 1);
+            
+            var count = _.filter(this.selectedskills, function(o) { if (o.id == skill.id) return o }).length;
+            
+            if(count <= 0) {
+                var ss = this.findSkill(skill);
+                ss.selected = false;
+            }
+        },
+        findSkill: function (skill) {
+            var ss = null;
+            if(skill.id > 8) {
+                //plant
+                ss = _.find(this.axies[2].skills, function(o) { if (o.id == skill.id) return o });
+            } else if (skill.id > 4) {
+                //dusk
+                ss = _.find(this.axies[1].skills, function(o) { if (o.id == skill.id) return o });
+            } else {
+                // mech
+                ss = _.find(this.axies[0].skills, function(o) { if (o.id == skill.id) return o });
+            }
+
+            return ss;
         }
     }
 })

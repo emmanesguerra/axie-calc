@@ -31,10 +31,6 @@ and open the template in the editor.
                                     <span class="name">{{ skills.name }}</span>
 
                                     <p class="desc">{{ skills.desc }}</p>
-                                    
-                                    <div class="addMore" v-if="skills.selected" @click="addMore(skills)">
-                                        +1
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -53,9 +49,9 @@ and open the template in the editor.
                                 <input type="checkbox" class="form-check-input" id="check2" v-model="isPricklyTrapAttackingLast">
                                 <label for="check2">Is Prickly Trap attacking last</label>
                             </div>
-                            <h4 class="mt-3">Selected Skills</h4>
-                            <div v-for="sskills in selectedskills">
-                                <label class="form-check-label">{{ sskills.name }}</label>
+                            <h4 class="mt-3">Selected Skills <small><small class="btn btn-sm btn-danger" @click="clearall">Clear all</small></small></h4>
+                            <div v-for="(sskills , index) in selectedskills">
+                                <label class="form-check-label mt-1"> <small class="btn btn-sm btn-danger" @click="removesskill(index, sskills)">X</small> {{ sskills.name }}</label>
                             </div>
                             
                             <h4 class="mt-3">Total Damage</h4>
