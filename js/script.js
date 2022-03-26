@@ -9,21 +9,24 @@ var app = new Vue({
         targettypes: [
             {
                 name: 'Plant/ Reptile/ Dusk',
-                type: 1,
+                type: 0,
             },
             {
                 name: 'Beat/ Mech/ Bug',
-                type: 2,
+                type: 1,
             },
             {
                 name: 'Bird/ Aqua/ Dawn',
-                type: 3,
+                type: 2,
             }
         ],
         selectedskills: [],
         isBugSplatAttackingBug: false,
         isPricklyTrapAttackingLast: false,
-        targettype: null,
+        targettype: 0,
+        mechCardsCnt: 0,
+        plantCardsCnt: 0,
+        duskCardsCnt: 0,
         axies: [
             {
                 name: 'Mech',
@@ -36,7 +39,21 @@ var app = new Vue({
                         def: 0,
                         desc: 'Draw a card when attacking an Aquatic, Bird, or Dawn target.',
                         img: 'beast-back-04.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 67,
+                                combo: 75
+                            },
+                            {
+                                solo: 59,
+                                combo: 65
+                            },
+                            {
+                                solo: 50,
+                                combo: 55
+                            }
+                        ]
                     },
                     {
                         id: 2,
@@ -46,7 +63,24 @@ var app = new Vue({
                         def: 30,
                         desc: "Deal 120% damage when comboed with another 'Nut Cracker' card.",
                         img: 'beast-mouth-02.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 129,
+                                combo: 144,
+                                combo2: 173
+                            },
+                            {
+                                solo: 112,
+                                combo: 125,
+                                combo2: 150
+                            },
+                            {
+                                solo: 95,
+                                combo: 106,
+                                combo2: 128
+                            }
+                        ]
                     },
                     {
                         id: 3,
@@ -56,7 +90,21 @@ var app = new Vue({
                         def: 20,
                         desc: "Deal 200% damage on critical strikes.",
                         img: 'beast-horn-10.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 160,
+                                combo: 178
+                            },
+                            {
+                                solo: 139,
+                                combo: 155
+                            },
+                            {
+                                solo: 118,
+                                combo: 132
+                            }
+                        ]
                     },
                     {
                         id: 4,
@@ -66,7 +114,24 @@ var app = new Vue({
                         def: 30,
                         desc: "Deal 120% damage when comboed with another 'Nut Cracker' card.",
                         img: 'beast-tail-10.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 129,
+                                combo: 144,
+                                combo2: 173
+                            },
+                            {
+                                solo: 112,
+                                combo: 125,
+                                combo2: 150
+                            },
+                            {
+                                solo: 95,
+                                combo: 106,
+                                combo2: 128
+                            }
+                        ]
                     },
                 ]
             },
@@ -81,7 +146,21 @@ var app = new Vue({
                         def: 30,
                         desc: 'Double shield from this card when comboed with a plant card.',
                         img: 'reptile-back-06.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 21,
+                                combo: 22
+                            },
+                            {
+                                solo: 17,
+                                combo: 18
+                            },
+                            {
+                                solo: 24,
+                                combo: 25
+                            }
+                        ]
                     },
                     {
                         id: 6,
@@ -91,7 +170,21 @@ var app = new Vue({
                         def: 50,
                         desc: 'Apply Stun to enemy when comboed with at least 2 additional cards.',
                         img: 'reptile-mouth-10.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 80,
+                                combo: 82
+                            },
+                            {
+                                solo: 65,
+                                combo: 70
+                            },
+                            {
+                                solo: 92,
+                                combo: 95
+                            }
+                        ]
                     },
                     {
                         id: 7,
@@ -101,7 +194,21 @@ var app = new Vue({
                         def: 0,
                         desc: "Disable target's horn cards next round.",
                         img: 'bird-horn-08.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 110,
+                                combo: 113
+                            },
+                            {
+                                solo: 149,
+                                combo: 153
+                            },
+                            {
+                                solo: 130,
+                                combo: 133
+                            }
+                        ]
                     },
                     {
                         id: 8,
@@ -111,7 +218,21 @@ var app = new Vue({
                         def: 50,
                         desc: "Disable target's mouth cards next round.",
                         img: 'plant-tail-12.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 86,
+                                combo: 88
+                            },
+                            {
+                                solo: 73,
+                                combo: 74
+                            },
+                            {
+                                solo: 98,
+                                combo: 101
+                            }
+                        ]
                     }
                 ]
             },
@@ -126,7 +247,23 @@ var app = new Vue({
                         def: 50,
                         desc: "Deal 50% more damage when attacking Bug targets.",
                         img: 'bug-back-08.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 126,
+                                combo: 132
+                            },
+                            {
+                                solo: 112,
+                                combo: 125,
+                                solobug: 165,
+                                combobug: 172
+                            },
+                            {
+                                solo: 93,
+                                combo: 97
+                            }
+                        ]
                     },
                     {
                         id: 10,
@@ -136,7 +273,21 @@ var app = new Vue({
                         def: 30,
                         desc: "Steal 1 energy from your opponent when comboed with another card.",
                         img: 'plant-mouth-02.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 33,
+                                combo: 34
+                            },
+                            {
+                                solo: 0,
+                                combo: 29
+                            },
+                            {
+                                solo: 0,
+                                combo: 39
+                            }
+                        ]
                     },
                     {
                         id: 11,
@@ -146,7 +297,27 @@ var app = new Vue({
                         def: 20,
                         desc: "Deal 120% damage if this Axie attacks last.",
                         img: 'plant-horn-10.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 12,
+                                combo: 13,
+                                sololast: 145,
+                                combolast: 152
+                            },
+                            {
+                                solo: 14,
+                                combo: 15,
+                                sololast: 16,
+                                combolast: 129
+                            },
+                            {
+                                solo: 17,
+                                combo: 18,
+                                sololast: 166,
+                                combolast: 174
+                            }
+                        ]
                     },
                     {
                         id: 12,
@@ -156,7 +327,21 @@ var app = new Vue({
                         def: 50,
                         desc: "Disable target's mouth cards next round.",
                         img: 'plant-tail-12.png',
-                        selected: false
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 88,
+                                combo: 92
+                            },
+                            {
+                                solo: 0,
+                                combo: 78
+                            },
+                            {
+                                solo: 101,
+                                combo: 105
+                            }
+                        ]
                     },
                 ]
             },
@@ -165,15 +350,69 @@ var app = new Vue({
     },
     computed: {
         totalDamage: function () {
+            var vm = this;
             var count = 0;
             _.forEach(this.selectedskills, function (skills) {
-                count += skills.atk;
+                var dmgType = vm.damagetype(skills);
+            
+                count += skills.dmg[vm.targettype][dmgType];
+                
             });
             
             return count;
         }
     },
     methods: {
+        damagetype: function (skills) {
+            var dmgType = 'solo';
+            if(skills.id > 8) {
+                //plant
+                if(this.plantCardsCnt > 1) {
+                    dmgType = 'combo';
+                }
+                if(skills.id == 9) {
+                    if(this.isBugSplatAttackingBug) {
+                        if(dmgType == 'solo') {
+                            dmgType = 'solobug';
+                        } else {
+                            dmgType = 'combobug';
+                        }
+                    }
+                }
+                if(skills.id == 11) {
+                    if(this.isPricklyTrapAttackingLast) {
+                        if(dmgType == 'solo') {
+                            dmgType = 'sololast';
+                        } else {
+                            dmgType = 'combolast';
+                        }
+                    }
+                }
+            } else if (skills.id > 4) {
+                //dusk
+                if(this.duskCardsCnt > 1) {
+                    dmgType = 'combo';
+                }
+            } else {
+                // mech
+                if(this.mechCardsCnt > 1) {
+                    dmgType = 'combo';
+                }
+                
+                if(skills.id == 2 || skills.id == 4) {
+                    var count = _.filter(this.selectedskills, function(o) { if (o.id == 2 || o.id == 4 ) return o }).length;
+                    if(count > 1) {
+                        dmgType = 'combo2';
+                    }
+                }
+            }
+            return dmgType;
+        },
+        skilldmg: function (skills) {
+            var dmgType = this.damagetype(skills);
+            
+            return skills.dmg[this.targettype][dmgType];
+        },
         loadBg: function (image) {
             return "background-image: url(images/" + image + ")";
         },
@@ -191,6 +430,18 @@ var app = new Vue({
             
             if(count < 2) {
                 this.selectedskills.push(skill);
+                
+                if(skill.id > 8) {
+                    //plant
+                    this.plantCardsCnt += 1;
+                } else if (skill.id > 4) {
+                    //dusk
+                    this.duskCardsCnt += 1;
+                } else {
+                    // mech
+                    this.mechCardsCnt += 1;
+                }
+                
             }
         },
         clearall: function () {
@@ -201,11 +452,25 @@ var app = new Vue({
             });
             
             this.selectedskills = [];
+            this.plantCardsCnt = 0;
+            this.duskCardsCnt = 0;
+            this.mechCardsCnt = 0;
         },
         removesskill: function (index, skill) {
             this.selectedskills.splice(index, 1);
             
             var count = _.filter(this.selectedskills, function(o) { if (o.id == skill.id) return o }).length;
+            
+            if(skill.id > 8) {
+                //plant
+                this.plantCardsCnt -= 1;
+            } else if (skill.id > 4) {
+                //dusk
+                this.duskCardsCnt -= 1;
+            } else {
+                // mech
+                this.mechCardsCnt -= 1;
+            }
             
             if(count <= 0) {
                 var ss = this.findSkill(skill);

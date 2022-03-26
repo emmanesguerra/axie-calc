@@ -51,7 +51,7 @@ and open the template in the editor.
                             </div>
                             <h4 class="mt-3">Selected Skills <small><small class="btn btn-sm btn-danger" @click="clearall">Clear all</small></small></h4>
                             <div v-for="(sskills , index) in selectedskills">
-                                <label class="form-check-label mt-1"> <small class="btn btn-sm btn-danger" @click="removesskill(index, sskills)">X</small> {{ sskills.name }}</label>
+                                <label class="form-check-label mt-1"> <small class="btn btn-sm btn-danger" @click="removesskill(index, sskills)">X</small> {{ sskills.name }} 【{{ skilldmg(sskills) }}】</label>
                             </div>
                             
                             <h4 class="mt-3">Total Damage</h4>
