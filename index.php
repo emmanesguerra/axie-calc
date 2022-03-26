@@ -55,7 +55,7 @@ and open the template in the editor.
                             </div>
                             
                             <h4 class="mt-3">Total Damage</h4>
-                            <h2><strong>{{ totalDamage }}</strong></h2>
+                            <h2><strong>【{{ totalDamage }}】</strong></h2>
                         </div>
                     </div>
                 </div>
