@@ -177,7 +177,7 @@ var app = new Vue({
                                 combo: 82
                             },
                             {
-                                solo: 65,
+                                solo: 68,
                                 combo: 70
                             },
                             {
@@ -254,8 +254,8 @@ var app = new Vue({
                                 combo: 132
                             },
                             {
-                                solo: 112,
-                                combo: 125,
+                                solo: 110,
+                                combo: 115,
                                 solobug: 165,
                                 combobug: 172
                             },
@@ -280,11 +280,11 @@ var app = new Vue({
                                 combo: 34
                             },
                             {
-                                solo: 0,
+                                solo: 28,
                                 combo: 29
                             },
                             {
-                                solo: 0,
+                                solo: 37,
                                 combo: 39
                             }
                         ]
@@ -300,20 +300,20 @@ var app = new Vue({
                         selected: false,
                         dmg: [
                             {
-                                solo: 12,
-                                combo: 13,
+                                solo: 121,
+                                combo: 126,
                                 sololast: 145,
                                 combolast: 152
                             },
                             {
-                                solo: 14,
-                                combo: 15,
-                                sololast: 16,
+                                solo: 0,
+                                combo: 0,
+                                sololast: 123,
                                 combolast: 129
                             },
                             {
-                                solo: 17,
-                                combo: 18,
+                                solo: 0,
+                                combo: 0,
                                 sololast: 166,
                                 combolast: 174
                             }
@@ -334,7 +334,7 @@ var app = new Vue({
                                 combo: 92
                             },
                             {
-                                solo: 0,
+                                solo: 74,
                                 combo: 78
                             },
                             {
