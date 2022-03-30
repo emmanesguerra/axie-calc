@@ -23,6 +23,8 @@ var app = new Vue({
         selectedskills: [],
         isBugSplatAttackingBug: false,
         isPricklyTrapAttackingLast: false,
+        targetlife: null,
+        targetdefense: null,
         targettype: 0,
         mechCardsCnt: 0,
         plantCardsCnt: 0,
@@ -31,30 +33,6 @@ var app = new Vue({
             {
                 name: 'Mech',
                 skills: [
-                    {
-                        id: 1,
-                        name: 'Heroic Reward',
-                        ene: 1,
-                        atk: 55,
-                        def: 0,
-                        desc: 'Draw a card when attacking an Aquatic, Bird, or Dawn target.',
-                        img: 'beast-back-04.png',
-                        selected: false,
-                        dmg: [
-                            {
-                                solo: 67,
-                                combo: 75
-                            },
-                            {
-                                solo: 59,
-                                combo: 65
-                            },
-                            {
-                                solo: 50,
-                                combo: 55
-                            }
-                        ]
-                    },
                     {
                         id: 2,
                         name: 'Nut Crack',
@@ -107,6 +85,30 @@ var app = new Vue({
                         ]
                     },
                     {
+                        id: 1,
+                        name: 'Heroic Reward',
+                        ene: 0,
+                        atk: 55,
+                        def: 0,
+                        desc: 'Draw a card when attacking an Aquatic, Bird, or Dawn target.',
+                        img: 'beast-back-04.png',
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 67,
+                                combo: 75
+                            },
+                            {
+                                solo: 59,
+                                combo: 65
+                            },
+                            {
+                                solo: 50,
+                                combo: 55
+                            }
+                        ]
+                    },
+                    {
                         id: 4,
                         name: 'Nut Throw',
                         ene: 1,
@@ -138,30 +140,6 @@ var app = new Vue({
             {
                 name: 'Dusk',
                 skills: [
-                    {
-                        id: 5,
-                        name: 'Vine Dagger',
-                        ene: 0,
-                        atk: 20,
-                        def: 30,
-                        desc: 'Double shield from this card when comboed with a plant card.',
-                        img: 'reptile-back-06.png',
-                        selected: false,
-                        dmg: [
-                            {
-                                solo: 21,
-                                combo: 22
-                            },
-                            {
-                                solo: 17,
-                                combo: 18
-                            },
-                            {
-                                solo: 24,
-                                combo: 25
-                            }
-                        ]
-                    },
                     {
                         id: 6,
                         name: 'Chomp',
@@ -211,6 +189,30 @@ var app = new Vue({
                         ]
                     },
                     {
+                        id: 5,
+                        name: 'Vine Dagger',
+                        ene: 0,
+                        atk: 20,
+                        def: 30,
+                        desc: 'Double shield from this card when comboed with a plant card.',
+                        img: 'reptile-back-06.png',
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 21,
+                                combo: 22
+                            },
+                            {
+                                solo: 17,
+                                combo: 18
+                            },
+                            {
+                                solo: 24,
+                                combo: 25
+                            }
+                        ]
+                    },
+                    {
                         id: 8,
                         name: 'Spicy Surprise',
                         ene: 1,
@@ -239,32 +241,6 @@ var app = new Vue({
             {
                 name: 'Plant',
                 skills: [
-                    {
-                        id: 9,
-                        name: 'Bug Splat',
-                        ene: 1,
-                        atk: 110,
-                        def: 50,
-                        desc: "Deal 50% more damage when attacking Bug targets.",
-                        img: 'bug-back-08.png',
-                        selected: false,
-                        dmg: [
-                            {
-                                solo: 126,
-                                combo: 132
-                            },
-                            {
-                                solo: 110,
-                                combo: 115,
-                                solobug: 165,
-                                combobug: 172
-                            },
-                            {
-                                solo: 93,
-                                combo: 97
-                            }
-                        ]
-                    },
                     {
                         id: 10,
                         name: 'Vegetal Bite',
@@ -320,6 +296,32 @@ var app = new Vue({
                         ]
                     },
                     {
+                        id: 9,
+                        name: 'Bug Splat',
+                        ene: 1,
+                        atk: 110,
+                        def: 50,
+                        desc: "Deal 50% more damage when attacking Bug targets.",
+                        img: 'bug-back-08.png',
+                        selected: false,
+                        dmg: [
+                            {
+                                solo: 126,
+                                combo: 132
+                            },
+                            {
+                                solo: 110,
+                                combo: 115,
+                                solobug: 165,
+                                combobug: 172
+                            },
+                            {
+                                solo: 93,
+                                combo: 97
+                            }
+                        ]
+                    },
+                    {
                         id: 12,
                         name: 'Spicy Surprise',
                         ene: 1,
@@ -349,6 +351,9 @@ var app = new Vue({
         message: 'Hello Vue!'
     },
     computed: {
+        totalLife: function () {
+            return +this.targetlife + +this.targetdefense;
+        },
         totalDamage: function () {
             var vm = this;
             var count = 0;
@@ -360,6 +365,9 @@ var app = new Vue({
             });
             
             return count;
+        },
+        difference: function() {
+            return this.totalLife - this.totalDamage;
         }
     },
     methods: {

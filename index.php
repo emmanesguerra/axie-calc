@@ -34,6 +34,15 @@ and open the template in the editor.
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h4 class="mt-3">Total <b class="text-primary">Life/</b> <b class="text-danger">Damage/</b> <b>Remains</b></h4>
+                                <h2>
+                                    <strong class="text-primary">【{{ totalLife }}】</strong>
+                                    <strong class="text-danger">【{{ totalDamage }}】</strong>
+                                    <strong>【{{ difference }}】</strong></h2>
+                            </div>
+                        </div>
                         <div class="calc">
                             <h4>Target Class</h4>
                             <div class="form-check" v-for="target in targettypes">
@@ -49,13 +58,19 @@ and open the template in the editor.
                                 <input type="checkbox" class="form-check-input" id="check2" v-model="isPricklyTrapAttackingLast">
                                 <label for="check2">Is Prickly Trap attacking last</label>
                             </div>
+
+                            <h4 class="mt-1">Target Life/ P. Defense</h4>
+                            <div class="row">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="LIFE" v-model="targetlife"/>
+                                    <input type="text" class="form-control" placeholder="POSIBLE DEFENSE" v-model="targetdefense"/>
+                                </div>
+                            </div>
+                            
                             <h4 class="mt-3">Selected Skills <small><small class="btn btn-sm btn-danger" @click="clearall">Clear all</small></small></h4>
                             <div v-for="(sskills , index) in selectedskills">
                                 <label class="form-check-label mt-1"> <small class="btn btn-sm btn-danger" @click="removesskill(index, sskills)">X</small> {{ sskills.name }} 【{{ skilldmg(sskills) }}】</label>
                             </div>
-                            
-                            <h4 class="mt-3">Total Damage</h4>
-                            <h2><strong>【{{ totalDamage }}】</strong></h2>
                         </div>
                     </div>
                 </div>
