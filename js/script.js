@@ -289,7 +289,7 @@ var app = new Vue({
                             },
                             {
                                 solo: 0,
-                                combo: 0,
+                                combo: 145,
                                 sololast: 166,
                                 combolast: 174
                             }
