@@ -7,12 +7,16 @@ and open the template in the editor.
     Created on : Mar 25, 2022, 3:06:44 PM
     Author     : User
 */
+.container
+{
+    margin-left: 0 !important;
+}
 .dcards
 {
     position: relative;
     float: left;
-    width: 175px;
-    height: 230px;
+    width: 145px;
+    height: 191px;
     margin: 0 10px 10px 0;
     background-size: 100%;
     background-repeat: no-repeat;
@@ -31,30 +35,30 @@ and open the template in the editor.
 {
     position: absolute;
     top: 3px;
-    left: 17px;
+    left: 13px;
     color: #ffffff;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     -webkit-text-stroke: 2px #000;
 }
 .dcards .name
 {
     position: absolute;
-    top: 11px;
-    left: 49px;
+    top: 9px;
+    left: 39px;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 12px;
     font-weight: bold;
 }
 .dcards .desc
 {
     position: absolute;
-    top: 155px;
-    left: 30px;
+    top: 125px;
+    left: 11px;
     color: #ffffff;
     font-size: 11px;
     float: left;
-    width: 130px;
+    width: 127px;
 }
 .dcards .addMore
 {
@@ -72,6 +76,6 @@ and open the template in the editor.
 {
     position: absolute;
     top: 10px;
-    left: 770px;
+    left: 645px;
     width: 300px;
 }
