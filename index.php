@@ -38,7 +38,17 @@ and open the template in the editor.
                                     <strong>【{{ difference }}】</strong></h2>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12"> <br />
+                                <h2>
+                                    <small class="btn btn-success col-1" @click="add('win')">WIN</small></small><strong class="text-primary">【{{ win }}】</strong> <br />
+                                    <small class="btn btn-danger col-1" @click="add('loss')">LOSS</small></small><strong class="text-danger">【{{ loss }}】</strong> <br />
+                                    <small class="btn btn-dark col-1" @click="add('draw')">DRAW</small></small><strong>【{{ draw }}】</strong>
+                                </h2> <br />
+                            </div>
+                        </div>
                         <div class="calc">
+                            <small class="btn btn-sm btn-danger" @click="resetall">Reset all</small></small>
                             <h4>Target Class</h4>
                             <div class="form-check" v-for="target in targettypes">
                                 <input type="radio" class="form-check-input" v-bind:id="target.name" v-bind:value="target.type" v-model="targettype">
@@ -64,7 +74,7 @@ and open the template in the editor.
                             
                             <h4 class="mt-3">Selected Skills <small><small class="btn btn-sm btn-danger" @click="clearall">Clear all</small></small></h4>
                             <div v-for="(sskills , index) in selectedskills">
-                                <label class="form-check-label mt-1"> <small class="btn btn-sm btn-danger" @click="removesskill(index, sskills)">X</small> {{ sskills.name }} 【{{ skilldmg(sskills) }}】</label>
+                                <label class="form-check-label mt-1"> <small class="btn btn-sm btn-danger" @click="removesskill(index, sskills)">X</small> <b>{{ sskills.name }}</b> 【{{ skilldmg(sskills) }}】</label>
                             </div>
                         </div>
                     </div>

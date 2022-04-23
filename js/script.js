@@ -29,6 +29,9 @@ var app = new Vue({
         mechCardsCnt: 0,
         plantCardsCnt: 0,
         duskCardsCnt: 0,
+        win: 0,
+        loss: 0,
+        draw: 0,
         axies: [
             {
                 name: 'Mech',
@@ -499,6 +502,25 @@ var app = new Vue({
             }
 
             return ss;
+        },
+        add: function (param) {
+            switch(param) {
+                case "win":
+                    this.win += 1;
+                    break;
+                case "loss":
+                    this.loss += 1;
+                    break;
+                case "draw":
+                    this.draw += 1;
+                    break;
+            }
+        },
+        resetall: function() {
+            this.clearall();
+            
+            this.targetlife = null;
+            this.targetdefense = null;
         }
     }
 })
